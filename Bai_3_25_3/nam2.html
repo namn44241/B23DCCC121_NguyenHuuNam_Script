@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bảng sản phẩm</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 10px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+    }
+    td:hover {
+        border-color: blue; /* Màu viền ô khi di chuột qua */
+        transform: translateY(-5px); /* Di chuyển ô lên */
+    }
+    td:hover .product-name, td:hover .product-price {
+        color: blue; /* Màu chữ của tên và giá sản phẩm khi di chuột qua */
+    }
+    .blink {
+        animation: blink 1s infinite; /* Thời gian và lặp lại */
+    }
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+    body {
+        padding-top: 250px;
+    }
+</style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td>
+            <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/309816/xiaomi-13t-pro-xanh-thumb-600x600.jpg" alt="Sản phẩm 1" style="width: 100px; height: auto;">
+            <div class="product-name">Xiaomi 13T Pro 5G</div>
+            <div class="product-price" style="color:red">13.690.000 đ</div>
+        </td>
+        <td>
+            <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sản phẩm 2" style="width: 100px; height: auto;">
+            <div class="product-name">Samsung Galaxy A24</div>
+            <div class="product-price" style="color:red">4.390.000 đ</div>
+        </td>
+        <td>
+            <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/314358/oppo-reno10-grey-thumbnew-600x600.jpeg" alt="Sản phẩm 3" style="width: 100px; height: auto;">
+            <div class="product-name">OPPO Reno10 5G</div>
+            <div class="product-price" style="color:red">9.490.000 đ</div>
+        </td>
+        <td>
+            <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/288401/oppo-a17-xanh-thumb-1-600x600.jpg" alt="Sản phẩm 4" style="width: 100px; height: auto;">
+            <div class="product-name">OPPO A17</div>
+            <div class="product-price" style="color:red">3.190.000 đ</div>
+        </td>
+        <td>
+            <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/286697/vivo-y35-thumb-1-600x600.jpg" alt="Sản phẩm 5" style="width: 100px; height: auto;">
+            <div class="product-name">Vivo Y35</div>
+            <div class="product-price" style="color:red">4.990.000 đ</div>
+        </td>
+        <td>
+            <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg" alt="Sản phẩm 5" style="width: 100px; height: auto;">
+            <div class="product-name">iPhone 15 Pro Max</div>
+            <div class="product-price" style="color:red">30.990.000 đ</div>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
