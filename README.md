@@ -1,0 +1,6 @@
+Chào thầy Vũ Văn Thương,
+Em là Nguyễn Hữu Nam, sinh viên lớp Lập trình Script. Em xin phép nộp bài tập cho ngày 25/3.
+Mong thầy có thể xem bài, nhận xét để em có thể hoàn thiện tốt hơn vào những lần sau!
+Em xin cám ơn thầy, chúc thầy có một ngày tốt lành!
+Trân trọng,
+Nam
