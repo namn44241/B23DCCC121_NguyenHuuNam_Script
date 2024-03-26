@@ -4,4 +4,3 @@ Vì tỉ lệ màn hình mỗi máy mỗi khác, và em chưa áp dụng đượ
 Mong thầy có thể xem bài, nhận xét để em có thể hoàn thiện tốt hơn vào những lần sau!
 Em xin cám ơn thầy, chúc thầy có một ngày tốt lành!
 Trân trọng,
-Nam
