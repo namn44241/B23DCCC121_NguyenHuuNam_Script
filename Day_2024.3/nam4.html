@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .required::after {
+            content: "*";
+            color: red;
+        }
+        .cs1 {
+            color: green;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Website bằng Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #5c5755;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav {
+            background-color: #4687e8;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        article {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Create Account with Nam Nguyen</h1>
+    </header>
+    <form>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="50%" valign="top">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="fname" class="required"><b>First name:</b></label><br>
+                            <input type="text" id="fname" name="fname" required>
+                          </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="email" class="required cs1"><b>Your email:</b></label><br>
+                            <input type="email" id="email" name="email" required>
+                          </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="pwd"class="required" class="cs1"><b>Password:</b></label><br>
+                            <input type="password" id="pwd" name="pwd" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                        <label for="text" class="required"><b>Gender:</b></label><br>
+                        <input type="radio" id="Male" name="text" value="Male">
+                        <label for="html">Male</label>
+                        <input type="radio" id="Female" name="text" value="Female">
+                        <label for="css">Female</label>
+                        <input type="radio" id="Third gender" name="text" value="Thỉrd gender">
+                        <label for="javascript">Third gender</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="income-source"><b>Source of Income:</b></label><br>
+                            <select name="income-source" id="income-source">
+                                <option value="salary">Salary</option>
+                                <option value="business">Business</option>
+                                <option value="investment">Investment</option>
+                                <option value="freelancing">Freelancing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="myfile"><b>Upload Profile Picture:</b></label>
+                            <input type="file" id="myfile" name="myfile">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="50%" valign="top">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="fname" class="required"><b>Last name:</b></label><br>
+                            <input type="text" id="fname" name="fname" required>
+                        </td>
+                    </tr>
+                    <tr> <td>
+                        <label for="pwd"class="required"><b>Confirm Password: </b></label><br>
+                            <input type="password" id="pwd" name="pwd" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <label for="text" ><b>Hobbies:</b></label><br>
+                        <input type="radio" id="Male" name="text" value="Male">
+                        <label for="html">Music</label>
+                        <input type="radio" id="Female" name="text" value="Female">
+                        <label for="css">Sports</label>
+                        <input type="radio" id="Third gender" name="text" value="Thỉrd gender">
+                        <label for="javascript">Travel</label>
+                        <input type="radio" id="Third gender" name="text" value="Thỉrd gender">
+                        <label for="javascript">Movies</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                                <div style="display: flex; align-items: center;">
+                                    <label for="text" ><b>Income </b>:</label><br>
+                                    <input type="range" id="income" name="income" min="20000" max="100000" value="20000" step="1000">
+                                    <output for="income" style="font-weight: bold;">20k</output>
+                                </div>
+                            <script>
+                                var incomeInput = document.getElementById('income');
+                                var output = document.querySelector('output[for="income"]');
+                        
+                                incomeInput.addEventListener('input', function() {
+                                    output.textContent = (this.value / 1000) + 'k';
+                                });
+                            </script>
+                        </td>
+                    </tr>
+                </table>
+                
+            </td>
+            <td>
+                        </td>
+        </tr>
+    </table>
+    
+    <footer>
+        <p>
+            <label for="bio">Bio:</label><br>
+            <textarea id="bio" name="bio" rows="4" cols="50"></textarea>
+        </p>
+    </footer>
+    </form>
+</body>
+</html>

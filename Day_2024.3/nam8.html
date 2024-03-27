@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 128, 0, 0.5); /* Màu xanh lá đậm hơn cho cửa sổ nổi */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px; /* Tăng padding cho nội dung form */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            width: 80%; /* Đặt chiều rộng của form */
+        }
+        .header {
+            text-align: center;
+            background-color: #ccc;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .header h2 {
+            color: #888;
+        }
+        .form {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .column {
+            width: calc(48% - 10px); /* Đặt chiều rộng của các cột */
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: rgb(0, 68, 255); /* Màu xanh lá */
+        }
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group select,
+        .form-group textarea,
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px; /* Tăng margin bottom để tạo khoảng cách giữa các trường */
+        }
+        .form-group select[multiple] {
+            height: 100px;
+        }
+        .footer {
+            text-align: center;
+        }
+        .footer button {
+            padding: 10px 20px;
+            background-color: rgb(0, 255, 89); /* Màu xanh lá */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .footer button:hover {
+            background-color: rgb(0, 136, 27);
+        }
+    </style>
+</head>
+<body>
+    <form>
+    <div class="modal">
+        <div class="modal-content">
+            <div class="header">
+                <h2>Create Account</h2>
+            </div>
+            <div class="form">
+                <div class="column">
+                    <div class="form-group">
+                        <label for="first-name">First name *</label>
+                        <input type="text" id="first-name" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender *</label>
+                        <select id="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="female">Third Gender</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="income-source">Source of Income *</label>
+                        <select name="income-source" id="income-source">
+                            <option value="salary">Salary</option>
+                            <option value="business">Business</option>
+                            <option value="investment">Investment</option>
+                            <option value="freelancing">Freelancing</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password *</label>
+                        <input type="password" id="confirm-password" placeholder="Enter your password again" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-picture">Upload Profile Picture</label>
+                        <input type="file" id="profile-picture">
+                    </div>
+                    <div class="column1">
+                        <label for="bio">Bio:</label><br>
+                        <textarea id="bio" name="bio" rows="4" cols="100"></textarea>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="form-group">
+                        <label for="last-name">Last name</label>
+                        <input type="text" id="last-name" placeholder="Enter your last name" style="width: 96%;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="text" ><b>Hobbies:</b></label><br>
+                    </div>
+                    <div >
+                        <input type="checkbox" id="Male" name="text" value="Male">
+                        <label for="html">Music</label>
+                        <input type="checkbox" id="Female" name="text" value="Female">
+                        <label for="css">Sports</label>
+                        <input type="checkbox" id="Third gender" name="text" value="Thỉrd gender">
+                        <label for="javascript">Travel</label>
+                        <input type="checkbox" id="Third gender" name="text" value="Thỉrd gender">
+                        <label for="javascript">Movies</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="income">Income *</label>
+                        <input type="range" id="income" min="20000" max="100000" step="1000" value="20000" style="width: 98%;" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" style="width: 97%;">
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <button onclick="createAccount()">Create</button>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
