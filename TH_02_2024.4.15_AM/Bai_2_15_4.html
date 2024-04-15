@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mảng trong JS</title>
+</head>
+<body>
+    <script>
+        let mangN = prompt("Nhập vào SỐ NGUYÊN, cách bằng dấu phẩy:");
+        let mang = mangN.split(",").map(function(item) {
+            return parseInt(item.trim(), 10);
+        });
+
+        // Hàm tìm số nguyên lớn nhất trong mảng
+        function mangMax(mang) {
+            if (mang.length === 0) {
+                return [];
+            }
+            let max = mang[0];
+            for (let i = 1; i < mang.length; i++) {
+                if (mang[i] > max) {
+                    max = mang[i];
+                }
+            }
+            return max;
+        }
+
+        let mangLonnhat = mangMax(mang);
+        alert("Số lớn nhất trong mảng là: " + mangLonnhat);
+
+        // Hàm tìm các số chính phương trong mảng
+        function soChinhPhuong(mang) {
+            let soCP = [];
+            for (let i = 0; i < mang.length; i++) {
+                if (kiemTra(mang[i])) {
+                    soCP.push(mang[i]);
+                }
+            }
+            return soCP;
+        }
+
+        function kiemTra(n) {
+            return Math.sqrt(n) % 1 === 0;
+        }
+
+        let kq = soChinhPhuong(mang);
+        alert("Mảng các số chính phương là: " + kq.join(','));
+
+        // Hàm tìm các số lớn hơn trung bình cộng của mảng
+        function soLonHon(mang) {
+            if (mang.length === 0) {
+                return [];
+            }
+            let tong = mang.reduce((a,b) => a + b, 0);
+            let trungBinh = tong / mang.length;
+
+            let soLon = mang.filter(item => item > trungBinh);
+
+            return soLon;
+        }
+        let soLonHontn = soLonHon(mang);
+        alert("Các số lớn hơn trung bình cộng của mảng: " + soLonHontn.join(',')) 
+
+        // Hàm tính trung bình cộng của các số không âm của mảng
+        function trungBinhKhongAm(mang) {
+            let mang1=mang.filter(item => item > 0);
+
+            let tong = mang1.reduce((a,b) => a + b, 0);
+            let trungBinh = tong /mang1.length;
+
+            return trungBinh
+        }
+        let trungBinhDuong = trungBinhKhongAm(mang);
+        alert("trung bình cộng của các số không âm của mảng: " + trungBinhDuong)
+    </script>
+</body>
+</html>

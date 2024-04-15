@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mảng trong JS</title>
+</head>
+<body>
+    <script>
+        var array1 = [1, 3, 5, 7, 'nam', 'ngu', 9, 11];
+        var array2 = [2, 8, 12, 15, 'huhu', 99];
+
+        var array3 = array1.concat(array2);
+        var array4 = array2.join('-');
+        var array5 = array1.slice(1,4);
+        var array6 = array2.reverse();
+        var array7 = array1.sort();
+        var array8 = array2.push(2024, 'vuive');
+        var array9 = array5.pop()
+        var array10 = array2.unshift('hello', 'concat')
+        var array11
+
+        alert(array1[4])
+        document.write(array4)
+        document.write(array3)
+        alert(array5)
+        alert(array6)
+        document.write(array7)
+        alert(array8)
+        document.write(array9)
+        alert(array10)
+    </script>
+
+</body>
+</html>

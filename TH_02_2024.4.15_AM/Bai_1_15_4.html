@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mảng trong JS</title>
+</head>
+<body>
+    <script>
+
+        let mangN = prompt("Nhập vào SỐ NGUYÊN, cách bằng dấu phẩy:");
+        let mang = mangN.split(",").map(function(item) {
+            return parseInt(item.trim(), 10);
+        });
+
+        // Sắp xếp theo thứ tự tăng dần
+        mang.sort(function(a,b) {
+            return a-b;
+        });
+        alert('Sắp xếp theo thứ tự tăng dần: ' + mang);
+
+        // Hàm loại bỏ các phần tử trùng nhau, sao cho mỗi phần tử chỉ xuất hiện 1 lần
+        let mangLoaibo = mang.filter(function(item, index){
+            return mang.indexOf(item) === index;
+        });
+        alert('Hàm loại bỏ các phần tử trùng nhau, sao cho mỗi phần tử chỉ xuất hiện 1 lần: ' + mangLoaibo);
+
+    </script>
+</body>
+</html>
