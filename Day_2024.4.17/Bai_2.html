@@ -1,0 +1,48 @@
+<!-- DOM -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sức mạnh javascript</title>
+</head>
+<body>
+
+        <h3>Xin chào</h3>
+        <p id="nam">Coding School</p>
+        <select id="namp">
+            <option class="car" value="Audi">Audi</option>
+            <option class="car" value="BMW">BMW</option>
+            <option class="car" value="Mercedes">Mercedes</option>
+            <option class="car" value="Volvo">Volvo</option>
+        </select>
+        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. </h3>
+        <h2>Khoa CNTT</h2>
+        <script>
+            // Lấy nội dung text ở dạng thô
+            var hello = document.getElementById('nam').innerText;
+            alert(hello)
+            // Lấy nội dung của thẻ có id = hello
+            var hello = document.getElementById('nam').innerHTML;
+            // In ra màn hình bằng thông báo alert
+            alert(hello);
+            // Thay thế nội dung của thẻ có id = hello
+            var hello = document.getElementById('nam').innerHTML = 'Học lập trình thật dễ !';
+            // In ra màn hình bằng thông báo alert
+            alert(hello)
+            document.getElementById('nam').style.color = "red";
+            // biến color sẽ chứa giá trị màu của thẻ html có id là zent
+            var color = document.getElementById('nam').style.color;
+            alert(color)
+            var element = document.getElementById('namp');
+		    element.addEventListener('click', function() {
+			document.write('Bạn vừa click');
+            })
+        </script>
+</body>
+</html>
