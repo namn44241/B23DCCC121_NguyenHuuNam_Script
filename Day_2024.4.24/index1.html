@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Toggle</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    .password-toggle {
+        position: relative;
+        display: inline-block;
+    }
+    .password-toggle input[type="password"] {
+        padding-right: 30px;
+    }
+    .password-toggle .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="password-toggle">
+    <input type="password" value="password" id="password" placeholder="Nhập mật khẩu">
+    <span class="toggle-password">Ẩn</span>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.toggle-password').click(function(){
+            $(this).toggleClass('active');
+            var input = $($(this).prev('input'));
+            if (input.attr('type') == 'password') {
+                input.attr('type', 'text');
+                $(this).text('Ẩn');
+            } else {
+                input.attr('type', 'password');
+                $(this).text('Hiện');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

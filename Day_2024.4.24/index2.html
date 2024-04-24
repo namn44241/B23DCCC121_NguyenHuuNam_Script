@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thêm nhiệm vụ</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    #task-list {
+        margin-top: 20px;
+    }
+    #task-list li {
+        cursor: pointer;
+    }
+    .red-text {
+        color: red;
+    }
+</style>
+</head>
+<body>
+
+<input type="text" id="task-input" value="Làm bài tập jquery" disabled>
+<button id="add-task-btn">Thêm nhiệm vụ</button>
+
+<ul id="task-list"></ul>
+
+<script>
+    $(document).ready(function(){
+        $('#add-task-btn').click(function(){
+            var taskText = $('#task-input').val();
+            var taskItem = $('<li>').text(taskText);
+            $('#task-list').append(taskItem);
+        });
+
+        $(document).on('click', '#task-list li', function(){
+            $(this).toggleClass('red-text');
+        });
+    });
+</script>
+
+</body>
+</html>
