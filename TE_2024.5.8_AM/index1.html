@@ -1,0 +1,114 @@
+<!--
+MSV: B23DCCC121
+Ho Ten: Nguyen Huu Nam
+De: 02
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DE02 - MIDTERM JS- Alarm Clock</title>
+<style>
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .snowflake {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #0bda87b6;
+            border-radius: 50%;
+            animation: snowflakes-fall 10s linear infinite;
+        }
+        @keyframes snowflakes-fall {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+</style>
+</head>
+<body>
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var snowflakes = document.getElementsByClassName('snowflake');
+            for (var i = 0; i < snowflakes.length; i++) {
+                var scale = Math.random() * 1.5;
+                snowflakes[i].style.transform = 'scale(' + scale + ')';
+                snowflakes[i].style.left = Math.random() * 100 + 'vw';
+                snowflakes[i].style.animationDuration = (Math.random() + 1) * 10 + 's';
+            }
+        });
+    </script>
+    <div>
+        <h1> ALARM CLOCK</h1>
+        <div>
+            <input type="number" id="minutesInput" placeholder="Nhập thời gian phút">
+            <input type="number" id="secondsInput" placeholder="Nhập thời gian giây">
+            <button onclick="startTimer()">Start</button>
+            <button onclick="resetTimer()">resetTimer</button>
+        </div>
+        <div id="timerDisplay">00:00</div>
+        <audio id="alarmSound" src="1.mp3" preload="auto"></audio>
+    </div>
+
+<script>
+    let timer;
+    let initialMinutes;
+    let initialSeconds;
+
+    function startTimer() {
+        const minutes = parseInt(document.getElementById("minutesInput").value);
+        const seconds = parseInt(document.getElementById("secondsInput").value);
+        initialMinutes = "";
+        initialSeconds = "";
+        let totalTime = minutes * 60 + seconds;
+        if (minutes < 0 || seconds <0 )
+        alert("NHẬP SAI")
+        timer = setInterval(() => {
+            if (totalTime <= 0) {
+                clearInterval(timer);
+                document.getElementById("timerDisplay").innerText = "00:00";
+                document.getElementById("alarmSound").play();
+                alert("Đã hết giờ");
+            }   else {
+                const minutesLeft = Math.floor(totalTime / 60);
+                const secondsLeft = totalTime % 60;
+                const displayMinutes = minutesLeft < 10 ? "0" + minutesLeft : minutesLeft;
+                const displaySeconds = secondsLeft < 10 ? "0" + secondsLeft : secondsLeft;
+                document.getElementById("timerDisplay").innerText = `${displayMinutes}:${displaySeconds}`;
+                totalTime--;
+            }
+        }, 1000);
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        document.getElementById("minutesInput").value = initialMinutes;
+        document.getElementById("secondsInput").value = initialSeconds;
+        document.getElementById("timerDisplay").innerText = `${initialMinutes < 10 ? "00" + initialMinutes : initialMinutes}:${initialSeconds < 10 ? "00" + initialSeconds : initialSeconds}`;
+    }
+
+</script>
+</body>
+</html>
+
+
+
