@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thay đổi nội dung</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("button").click(function(){
+        $("#content").html(`
+        <h3>Index 1: Thay đổi nội dung bằng Jquery</h3>
+        <div>UDU students are dynamic and creative !!!</div>
+        `);
+    });
+    });
+</script>
+</head>
+
+<body>
+<div id="content">
+  <h3>Index 1: Thay đổi nội dung bằng Jquery</h3>
+  <div>Sinh viên UDU năng động sáng tạo.</div>
+</div>
+<button type="button">Thay đổi</button>
+</body>
+</html>
