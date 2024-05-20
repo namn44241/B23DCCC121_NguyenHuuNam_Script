@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ES6</title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    
+    <script type="text/babel" id="Khai báo toàn cục">
+    var x = 10;
+    function myFnc(){
+    alert('vd1: ' + x); // output: 10, x có ảnh hưởng tới Function
+    }
+    alert('vd1: '+ x); // output: 10, x có ảnh hưởng khắp nơi
+    myFnc();
+
+    // Ta thấy x ảnh hưởng cả bên trong và bên ngoài function.
+    </script>
+
+    <script id="Khai báo địa phương">
+        var x = 10;
+        function myFnc(){
+        var y = x + 5 /* y được khai báo trong Function */
+        alert('vd2:'+ y); /* output: 15, y chỉ có ảnh hưởng bên trong Function */
+        }
+        alert('vd2: '+ y); /* output: Error */
+        myFnc();
+
+        // Ta thấy y được khai báo bên trong function nên chỉ ảnh hưởng bên trong function,
+        //  nếu sử dụng bên ngoài sẽ báo lỗi.
+    </script>
+
+    <script id="var với khối (block)">
+        var x = 10;
+        if (x === 10) {
+        var x = 20; /* x được gán giá trị mới là 20 */
+        alert('vd3: '+ x); /* output: 20 */
+        }
+        alert('vd3: ' +x);  /* output: 20 */
+
+        //         x bên trong câu điều kiện if sẽ cho kết quả 20.
+        // x bên ngoài if sẽ bị ảnh hưởng kết quả từ bên trong if nên cũng cho kết quả 20.
+    </script>
+
+    <script id="let với khối (block)">
+        let x1 = 10;
+        if (x1 === 10) {
+        let x1 = 20; /* x được let với giá trị mới là 20 */
+        alert('vd4: '+ x1); /* output: 20, giá trị mới chỉ có tác dụng trong if */
+        }
+        alert('vd4: ' + x1);  /* output: 10, x bên ngoài if, nên không bị ảnh hưởng giá trị mới */
+
+//         x bên trong câu điều kiện if sẽ cho kết quả riêng là 20.
+        // x bên ngoài if sẽ cho kết quả riêng (được gán ban đầu) là 10.
+    </script>
+
+    <script id="ES6 khai báo giá trị với const">
+        const x2 = 10;
+        console.log('ES6 khai báo giá trị với const: '+ x2);  /* output: 10 */
+        if (x === 10) {
+        x2 = 20;
+        console.log('ES6 khai báo giá trị với const: '+ x2); /* output: Error */
+        }
+        // const chỉ mang duy nhất một giá trị, 
+        // nếu giá trị thay đổi sẽ báo lỗi.
+    </script>
+
+    <script id="Gán mặc định tại vị trí khai báo">
+        function multiply(a, b = 1) {
+        return a * b;
+        }
+        alert('Gán mặc định tại vị trí khai báo:' + multiply(5, 2)); /* ouput: 10 */
+        alert('Gán mặc định tại vị trí khai báo:' + multiply(5)); /* ouput: 5 */
+
+        // Ta thấy khi khai báo giá trị b thì ta gán luôn giá trị b=1, 
+        // giá trị này sẽ là giá trị mặc định của b.
+    </script>
+
+    <script id="Gán bên trong function">
+        function member(name) {
+        name = name || "Guess";
+        return name;
+        }
+        alert('Gán bên trong function:'+ member()); /* ouput: Guess */
+        alert('Gán bên trong function:' + member("Dương Minh Trí")); /* ouput: "Dương Minh Trí" */
+    </script>
+
+    <script id="Spread syntax với Array">
+        const oldArray = [1, 2, 3];
+
+        const newArray1 = [oldArray, 4, 5];
+        console.log('Spread syntax với Array: '+newArray1); /* ouput: (3) [Array(3), 4, 5] */
+
+
+        const newArray2 = [...oldArray, 4, 5];
+        console.log('Spread syntax với Array: '+ newArray2); /* ouput: [1, 2, 3, 4, 5] */
+    </script>
+
+    <script id="Spread syntax với Object">
+        const oldObject = {
+        name: 'Dương Minh Trí'
+        };
+
+        const newObject1 = {
+        oldObject,
+        age: 4
+        };
+
+        console.log('Spread syntax với Object: ' + newObject1); /* ouput: {oldObject: {…}, age: 4} */
+
+        const newObject2 = {
+        ...oldObject,
+        age: 4
+        };
+
+        console.log('Spread syntax với Object: ' + newObject2); /* ouput: {name: "Dương Minh Trí", age: 4} */
+    </script>
+    <script id="Ví dụ về rest parameters">
+        function number(num1, num2, ...numOther){
+        console.log("Ví dụ về rest parameters, x: ", num1); 
+        console.log("Ví dụ về rest parameters, y: ", num2);
+        console.log("Ví dụ về rest parameters, Other number: ", numOther);
+        }
+        number("one", "two", "three", "four", "five", "six");
+        /* ouput: 
+        x: one
+        y: two
+        Other number: (4) ["three", "four", "five", "six"] */
+    </script>
+
+    <script id="Destructuring với Array">
+        const array = [1, 2, 3];
+        const [a, b] = array;
+        console.log('Destructuring với Array: ' + a); /* output: 1 */
+        console.log('Destructuring với Array: ' + b); /* output: 2 */
+        console.log('Destructuring với Array: ' + array); /* output: [1, 2, 3] */
+    </script>
+
+    <script id="Destructuring với Object">
+        const myObject = {
+            name: "Dương Minh Trí",
+            age: 4
+        }
+        const {name, age} = myObject;
+        console.log('Destructuring với Object: '+ name); /* output: "Dương Minh Trí" */
+        console.log('Destructuring với Object: '+ age); /* output: 4 */
+        console.log('Destructuring với Object: '+ myObject); /* output: {name: "Dương Minh Trí", age: 4} */
+    </script>
+
+    <script>
+        var member4 = (name, age) => {
+            console.log('Ví dụ cơ bản về arrow function: ' + name, age);
+        }
+        member4("Dương Minh Trí", 4); /* output: "Dương Minh Trí" 4 */
+
+        var member2 = name => {
+            console.log('Ví dụ cơ bản về arrow function - 1 tham số: '+ name);
+        }
+        member2("Dương Minh Trí"); /* output: "Dương Minh Trí" */
+
+        var member3 = () => {
+            console.log('Ví dụ cơ bản về arrow function - không có tham số: '+ "Dương Minh Trí");
+        }
+        member3(); /* output: "Dương Minh Trí" */
+
+        var a4 = [1, 2, 3];
+        var arr = () => a4[0];
+        console.log('Ví dụ cơ bản về arrow function - return giá trị: '+ arr()); /* output: 1 */
+    </script>
+
+    <script id="ES6 Classes">
+        class Member {
+        constructor() {
+            this.name = "Dương Minh Trí";
+        }
+        }
+        var x = new Member();
+        console.log('ES6 Classes: '+ x.name); /* ouput: "Dương Minh Trí" */
+    </script>
+
+    <script id="Classes - sử dụng với method">
+        class Member6 {
+        constructor() {
+            this.name = "Dương Minh Trí";
+        }
+
+        memberName() {
+            return this.name;
+        }
+        }
+        var x = new Member6();
+        console.log('Classes - sử dụng với method: '+ x.memberName()); /* ouput: "Dương Minh Trí" */
+    </script>
+
+    <script id="Classes - tính kế thừa (inheritance)">
+        class Member7 {
+        constructor() {
+            this.name = "Dương Minh Trí";
+        }
+
+        memberName() {
+            return this.name;
+        }
+        }
+
+        class User extends Member7 {
+        constructor(name, age) {
+            super(name);
+            this.age = 4;
+        }
+
+        memberInfo() {
+            return this.memberName() + 'Tuổi:' + this.age;
+        }
+        }
+        var x = new User();
+        console.log('Classes - tính kế thừa (inheritance): '+ x.memberInfo()); /* ouput: "Dương Minh Trí" Tuổi:4 */
+    </script>
+
+    <script type="module">
+        import member8 from './Day_2024.5.20/member1.js';
+        console.log('Javascript - export theo mặc định (default): ' + member8.name); 
+        /* ouput: "Dương Minh Trí" */
+
+        import { member9, info } from './Day_2024.5.20/member2.js';
+        console.log('Javascript - export theo tên (named): ' + member9.name); 
+        /* ouput: "Dương Minh Trí" */
+        console.log('Javascript - export theo tên (named): ' + info.event); 
+        /* ouput: "New event" */
+    </script>
+  </body>
+</html>
