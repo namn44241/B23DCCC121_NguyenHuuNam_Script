@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Ajax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Danh sách người dùng</h1>
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <button id="load-data">Load data</button>
+    <script>
+        $(document).ready(function() {
+            $('#load-data').click(function() {
+                $.ajax({
+                    url: "http://api.uduer.com/users/",
+                    type: "GET",
+                    success: function(result) {
+                        var data = result.data.users;
+                        console.log(data);
+                        var tbody = $('tbody');
+                        tbody.empty(); // Clear existing data
+                        data.forEach(function(user){
+                            tbody.append("<tr><td>"+user._id+"</td><td>"+user.name+"</td><td>"+user.email+"</td><td><button onclick='createUser()'>create</button><button onclick='editUser(\""+user._id+"\")'>edit</button><button onclick='deleteUser(\""+user._id+"\")'>delete</button></td><td>")
+                        });
+                    },
+                    error: function(error){
+                        console.log(error)
+                    }
+                })
+                
+            });
+        })
+    </script>
+
+    <h2>Tạo người dùng mới</h2>
+    <form id="createUserForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        
+        <button type="submit">Create User</button>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            // Load data when button is clicked
+            $('#load-data').click(function() {
+                $.ajax({
+                    url: "http://api.uduer.com/users/",
+                    type: "GET",
+                    success: function(result) {
+                        var data = result.data.users;
+                        console.log(data);
+                        var tbody = $('tbody');
+                        tbody.empty(); // Clear existing data
+                        data.forEach(function(user){
+                            tbody.append("<tr><td>"+user._id+"</td><td>"+user.name+"</td><td>"+user.email+"</td><td><button onclick='createUser()'>create</button><button onclick='editUser(\""+user._id+"\")'>edit</button><button onclick='deleteUser(\""+user._id+"\")'>delete</button></td><td>")
+                        });
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#createUserForm').submit(function(event) {
+                event.preventDefault(); 
+
+                var formData = {
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    phone: $('#phone').val(),
+                    password: $('#password').val()
+                };
+
+                $.ajax({
+                    url: "http://api.uduer.com/users/",
+                    type: "POST",
+                    data: JSON.stringify(formData),
+                    contentType: "application/json",
+                    success: function(result) {
+                        console.log(result);
+                        alert("Tạo người dùng mới thành công!");
+                        $('#createUserForm')[0].reset(); 
+                        $('#load-data').click(); 
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        alert("Tạo người dùng mới thất bại!.");
+                    }
+                });
+            });
+        });
+
+        function editUser(userId) {
+            // Lấy thông tin người dùng từ API
+            $.ajax({
+                url: "http://api.uduer.com/users/" + userId,
+                type: "GET",
+                success: function(result) {
+                    var user = result.data.user;
+                    // Hiển thị form sửa thông tin người dùng với dữ liệu đã lấy được
+                    // ...
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function deleteUser(userId) {
+            if (confirm("Bạn có chắc chắn muốn xóa người dùng này?")) {
+                $.ajax({
+                    url: "http://api.uduer.com/users/" + userId,
+                    type: "DELETE",
+                    success: function(result) {
+                        alert("Xóa người dùng thành công!");
+                        $('#load-data').click(); // Cập nhật danh sách người dùng
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        alert("Xóa người dùng thất bại!");
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
